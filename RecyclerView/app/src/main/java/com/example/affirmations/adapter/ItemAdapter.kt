@@ -14,10 +14,14 @@ class ItemAdapter(
     private val dataset: List<Affirmation>
 ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
+    // Provide a reference to the views for each data item
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.item_title)
     }
 
+    /**
+     * Create new views (invoked by the layout manager)
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item, parent, false)
@@ -25,9 +29,16 @@ class ItemAdapter(
         return ItemViewHolder(adapterLayout)
     }
 
+    /**
+     * Replace the contents of a view (invoked by the layout manager)
+     */
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val item = dataset[position]
+        holder.textView.text = context.resources.getString(item.stringResourceId)
     }
 
+    /**
+     * Return the size of your dataset (invoked by the layout manager)
+     */
     override fun getItemCount(): Int = dataset.size
 }
