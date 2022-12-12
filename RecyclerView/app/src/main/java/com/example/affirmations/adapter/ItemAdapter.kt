@@ -25,7 +25,5 @@ class ItemAdapter(
         TODO("Not yet implemented")
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount(): Int = dataset.size
 }
