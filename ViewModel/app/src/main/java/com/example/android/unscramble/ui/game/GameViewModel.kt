@@ -54,6 +54,13 @@ class GameViewModel : ViewModel() {
         return false
     }
 
+    fun reinitializedData() {
+        _score = 0
+        _currentWordCount = 0
+        wordsList.clear()
+        getNextWord()
+    }
+
     init {
         Log.d("GameViewModel", "GameViewModel created!")
         getNextWord()
