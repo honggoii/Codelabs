@@ -7,7 +7,7 @@ class GameViewModel : ViewModel() {
 
     private var _score = 0
     private var _currentWordCount = 0
-    private var _currentScrambledWord = "test"
+    private lateinit var _currentScrambledWord: String
     val currentScrambleWord
         get() = _currentScrambledWord
 
@@ -36,6 +36,7 @@ class GameViewModel : ViewModel() {
 
     init {
         Log.d("GameViewModel", "GameViewModel created!")
+        getNextWord()
     }
 
     override fun onCleared() {
