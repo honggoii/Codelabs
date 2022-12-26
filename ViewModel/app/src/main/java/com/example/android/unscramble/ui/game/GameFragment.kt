@@ -69,22 +69,24 @@ class GameFragment : Fragment() {
 
     private fun onSubmitWord() {
         val playerWord = binding.textInputEditText.text.toString()
+//        Log.e("GameFragment", playerWord)
+        if (playerWord.isNotBlank()) {
+            if (viewModel.isUserWordCorrect(playerWord)) {
+                setErrorTextField(false)
+                if (viewModel.nextWord()) {
+                    updateNextWordOnScreen()
+                } else {
+                    showFinalScoreDialog()
+                }
+            } else {
+                setErrorTextField(true)
+            }
 
-        if (viewModel.isUserWordCorrect(playerWord)) {
-            setErrorTextField(false)
             if (viewModel.nextWord()) {
                 updateNextWordOnScreen()
             } else {
                 showFinalScoreDialog()
             }
-        } else {
-            setErrorTextField(true)
-        }
-
-        if (viewModel.nextWord()) {
-            updateNextWordOnScreen()
-        } else {
-            showFinalScoreDialog()
         }
     }
 
