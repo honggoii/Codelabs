@@ -18,7 +18,6 @@ package com.example.android.unscramble.ui.game
 
 import android.os.Bundle
 import android.util.Log
-import android.util.Log.e
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -96,15 +95,6 @@ class GameFragment : Fragment() {
     }
 
     /*
-     * Gets a random word for the list of words and shuffles the letters in it.
-     */
-    private fun getNextScrambledWord(): String {
-        val tempWord = allWordsList.random().toCharArray()
-        tempWord.shuffle()
-        return String(tempWord)
-    }
-
-    /*
      * Re-initializes the data in the ViewModel and updates the views with the new data, to
      * restart the game.
      */
@@ -147,8 +137,4 @@ class GameFragment : Fragment() {
             .show()
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        Log.d("GameFragment", "GameFragment destroyed!")
-    }
 }

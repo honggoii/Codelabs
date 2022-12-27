@@ -68,8 +68,4 @@ class GameViewModel : ViewModel() {
         getNextWord()
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        Log.d("GameViewModel", "GameViewModel destroyed!")
-    }
 }
