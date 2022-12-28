@@ -8,23 +8,23 @@ import java.util.*
 
 class OrderViewModel : ViewModel() {
 
+    private val _quantity = MutableLiveData<Int>()
+
+    val quantity: LiveData<Int> = _quantity
+    private val _flavor = MutableLiveData<String>()
+
+    val flavor: LiveData<String> = _flavor
+    private val _date = MutableLiveData<String>()
+
+    val date: LiveData<String> = _date
+    private val _price = MutableLiveData<Double>()
+
+    val price: LiveData<Double> = _price
+    val dateOptions = getPickupOptions()
+
     init {
         resetOrder()
     }
-
-    private val _quantity = MutableLiveData<Int>()
-    val quantity: LiveData<Int> = _quantity
-
-    private val _flavor = MutableLiveData<String>()
-    val flavor: LiveData<String> = _flavor
-
-    private val _date = MutableLiveData<String>()
-    val date: LiveData<String> = _date
-    
-    private val _price = MutableLiveData<Double>()
-    val price: LiveData<Double> = _price
-
-    val dateOptions = getPickupOptions()
 
     fun resetOrder() {
         _quantity.value = 0
