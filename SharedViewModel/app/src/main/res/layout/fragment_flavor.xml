@@ -111,6 +111,7 @@
 
             <Button
                 android:id="@+id/cancel_button"
+                android:onClick="@{() -> flavorFragment.cancelOrder()}"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
