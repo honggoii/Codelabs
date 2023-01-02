@@ -46,6 +46,7 @@ class SportsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentSportsListBinding.bind(view)
         val slidingPaneLayout = binding.slidingPaneLayout
+        slidingPaneLayout.lockMode = SlidingPaneLayout.LOCK_MODE_LOCKED
 
         // Connect the SlidingPaneLayout to the system back button.
         // This callback is only active during the fragment's life cycle.
@@ -80,9 +81,7 @@ SlidingPaneLayout.PanelSlideListener {
         slidingPaneLayout.closePane()
     }
 
-    override fun onPanelSlide(panel: View, slideOffset: Float) {
-        TODO("Not yet implemented")
-    }
+    override fun onPanelSlide(panel: View, slideOffset: Float) {}
 
     override fun onPanelOpened(panel: View) {
         isEnabled = true
