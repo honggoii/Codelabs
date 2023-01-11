@@ -5,7 +5,7 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import coil.load
 
-@BindingAdapter
+@BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
