@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.busschedule.databinding.StopScheduleFragmentBinding
 import com.example.busschedule.viewmodels.BusScheduleViewModel
 import com.example.busschedule.viewmodels.BusScheduleViewModelFactory
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -68,6 +69,7 @@ class StopScheduleFragment: Fragment() {
         return view
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
