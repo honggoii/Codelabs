@@ -27,6 +27,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wordsapp.data.SettingDataStore
 import com.example.wordsapp.databinding.FragmentLetterListBinding
 
 /**
@@ -42,6 +43,8 @@ class LetterListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     // Keeps track of which LayoutManager is in use for the [RecyclerView]
     private var isLinearLayoutManager = true
+
+    private lateinit var SettingDataStore: SettingDataStore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +67,7 @@ class LetterListFragment : Fragment() {
         // Sets the LayoutManager of the recyclerview
         // On the first run of the app, it will be LinearLayoutManager
         chooseLayout()
+        SettingDataStore = SettingDataStore(requireContext())
     }
 
     /**
