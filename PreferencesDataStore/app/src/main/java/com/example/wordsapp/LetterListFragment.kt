@@ -25,11 +25,13 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wordsapp.data.SettingDataStore
 import com.example.wordsapp.databinding.FragmentLetterListBinding
+import kotlinx.coroutines.launch
 
 /**
  * Entry fragment for the app. Displays a [RecyclerView] of letters.
@@ -125,6 +127,10 @@ class LetterListFragment : Fragment() {
                 // Sets layout and icon
                 chooseLayout()
                 setIcon(item)
+
+                lifecycleScope.launch {
+                    SettingDataStore.saveLayoutToPreferencesStore(isLinearLayoutManager, requireContext())
+                }
 
                 return true
             }
