@@ -21,7 +21,7 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
 class SettingDataStore(context: Context) {
     private val IS_LINEAR_LAYOUT_MANAGER = booleanPreferencesKey("is_linear_layout_manager")
 
-    val preferences: Flow<Boolean> = context.dataStore.data
+    val preferenceFlow: Flow<Boolean> = context.dataStore.data
         .catch {
             if (it is IOException) {
                 it.printStackTrace()
