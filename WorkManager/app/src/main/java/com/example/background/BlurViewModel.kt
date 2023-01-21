@@ -52,7 +52,7 @@ class BlurViewModel(application: Application) : ViewModel() {
             .beginWith(OneTimeWorkRequest.from(CleanupWorker::class.java))
 
         // Add "Blur Image" WorkRequest
-        val blurRequest = OneTimeWorkRequestBuilder<BlurWorker>()
+        val blurRequest = OneTimeWorkRequest.Builder(BlurWorker::class.java)
             .setInputData(createInputDataForUri())
             .build()
 
@@ -60,7 +60,7 @@ class BlurViewModel(application: Application) : ViewModel() {
         val save = OneTimeWorkRequest.Builder(SaveImageToFileWorker::class.java).build()
 
         // Chaining
-        continuation
+        continuation = continuation
             .then(blurRequest)
             .then(save)
 
