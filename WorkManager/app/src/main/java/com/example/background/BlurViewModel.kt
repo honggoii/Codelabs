@@ -51,18 +51,21 @@ class BlurViewModel(application: Application) : ViewModel() {
         var continuation = workManager
             .beginWith(OneTimeWorkRequest.from(CleanupWorker::class.java))
 
-        // Add "Blur Image" WorkRequest
-        val blurRequest = OneTimeWorkRequest.Builder(BlurWorker::class.java)
-            .setInputData(createInputDataForUri())
-            .build()
+        for (i in 0 until blurLevel) {
+            val blurBuilder = OneTimeWorkRequestBuilder<BlurWorker>()
+
+            if (i == 0) {
+                blurBuilder.setInputData(createInputDataForUri())
+            }
+
+            continuation = continuation.then(blurBuilder.build())
+        }
 
         // Add "Save image to the File" WorkRequest
         val save = OneTimeWorkRequest.Builder(SaveImageToFileWorker::class.java).build()
 
         // Chaining
-        continuation = continuation
-            .then(blurRequest)
-            .then(save)
+        continuation = continuation.then(save)
 
         // Start!!
         continuation.enqueue()
